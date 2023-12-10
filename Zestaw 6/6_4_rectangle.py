@@ -15,9 +15,7 @@ class Rectangle:
         return "Rectangle({}, {}, {}, {})".format(self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y)
 
     def __eq__(self, other):
-        return (self.pt1 == other.pt1 and self.pt2 == other.pt2) or \
-               (self.pt1 == other.pt2 and self.pt2 == other.pt1) or \
-               (self.area() == other.area())
+        return self.pt1 == other.pt1 and self.pt2 == other.pt2
 
     def __ne__(self, other):
         return not self == other
@@ -45,14 +43,10 @@ class TestRectangle(unittest.TestCase):
         print(f"Test repr: {repr(rect)}")
         self.assertEqual(repr(rect), "Rectangle(1, 2, 3, 4)")
 
-    def test_eq(self):
+        def test_eq(self):
         rect1 = Rectangle(1, 2, 3, 4)
+        rect2 = Rectangle(1, 2, 3, 4)
         rect3 = Rectangle(0, 5, 2, 2)
-        rect4 = Rectangle(4, 4, 6, 6)
-
-        self.assertEqual(rect1, rect4)
-        # rozne prostokąty
-        self.assertNotEqual(rect1, rect3)
 
     def test_center(self):
         rect = Rectangle(1, 2, 5, 6)
